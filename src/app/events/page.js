@@ -7,6 +7,7 @@ const Page = () => {
     <div>
       <Problem />
       <Prizes />
+     
     </div>
   );
 };
