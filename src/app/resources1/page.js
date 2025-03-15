@@ -9,9 +9,9 @@ const ROTATE_SPEED = 0.01;
 
 export default function Home() {
   return (
-    <div className={`flex items-center justify-center w-full flex-col h-screen bg-amber-50`}>
+    <section className={`flex items-center w-full flex-col h-[500vh] bg-amber-50`}>
       <CreativeComp />
-    </div>
+    </section>
   );
 }
 
@@ -19,7 +19,7 @@ export default function Home() {
 //   return parseFloat(a.slice(0, a.length - 1));
 // }
 
-function CreativeComp() {
+function CreativeComp({ firstLine = "ADVAYA", lastLine = "HACKATHON" }) {
   const divEle = useRef();
   const textEle = useRef();
   const textEle1 = useRef();
@@ -33,6 +33,7 @@ function CreativeComp() {
   const iconEle6 = useRef();
   const iconEle7 = useRef();
   const [divCenter, setDivCenter] = useState({ x: 0, y: 0 });
+  const [scrollPercent, setScrollPercent] = useState(0);
   useEffect(() => {
     function getOriginPoint() {
       if (divEle.current) {
@@ -54,7 +55,7 @@ function CreativeComp() {
       { angle: 257.11 * (Math.PI / 180), plaEle: iconEle6 },
       { angle: 308.53 * (Math.PI / 180), plaEle: iconEle7 },
     ]
-    const plaRadius = 50;
+    const plaRadius = 45;
     const intervalId = setInterval(() => {
       for (let i = 0; i < planets.length; i++) {
         const planet = planets[i];
@@ -63,16 +64,35 @@ function CreativeComp() {
         const y = Math.sin(planet.angle) * plaRadius * 7;
         const z = Math.sin(planet.angle) * plaRadius * 1.5;
         // console.log(x, y);
-        // if (i === 0) {
-        //   const sin1 = Math.sin(planet.angle);
-        //   console.log(z, sin1);
-        // }
         if (planet.plaEle.current) {
           planet.plaEle.current.style.transform = `translateX(${x}%) translateY(${y}%) translateZ(${z}px)`;
         }
       }
     }, 10);
     return () => clearInterval(intervalId);
+  }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (divEle.current) {
+        const section = divEle.current;
+        const scrollY = window.scrollY;
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (scrollY < sectionTop) {
+          setScrollPercent(0);
+        } else if (scrollY > sectionTop + sectionHeight) {
+          setScrollPercent(100);
+        } else {
+          const scrolledInsideSection = ((scrollY - sectionTop) / sectionHeight) * 100;
+          setScrollPercent(Math.min(Math.max(scrolledInsideSection, 0), 100));
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   function smoothAnimation(current, textEle, timeoutMS, transform) {
     setTimeout(() => {
@@ -137,108 +157,99 @@ function CreativeComp() {
       smoothAnimation(target3, textEle3, 13, transform3);
     }
   }
+
+  // console.log(scrollPercent);
   return (
-    <>
-      <div className="text-center selection:bg-violet-400 text-[180px] leading-[1] w-full relative h-[100%] transform-3d perspective-[10cm]"
+    <div className="relative w-full h-[200vh]"
+      onMouseMove={handleMouseMove}
+    >
+      <div className="text-center selection:bg-violet-400 text-[300px] tracking-wider leading-[0.9] w-full relative h-[100vh] transform-3d perspective-[15cm]"
         ref={divEle}
-        onMouseMove={handleMouseMove}
       >
+        <div className="small-bounce w-[57%] h-[30%] oval border-violet-800 border-[10px] translate-z-2 z-20 rotate-x-45 -rotate-y-3 absolute -translate-x-1/2 -translate-y-[100%] left-1/2 top-1/2">
+        </div>
+        {/* <div className="small-bounce w-[60%] h-[250px] rounded-b-full border-violet-800/30 border-b-[20px] translate-z-2 z-20 rotate-x-45 -rotate-y-6 absolute -translate-x-1/2 -translate-y-[90%] left-1/2 top-1/2">
+        </div> */}
         <div ref={textEle} className="text-shadow-ele absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 text-white z-[10]" >
-          <h2 className="font-bold">
-            CREATIVE
-          </h2>
-          <h2 className="font-bold">
-            DEVELOPER
-          </h2>
+          <FirstLine text={firstLine} scrollPer={scrollPercent} />
+          <LastLine text={lastLine} scrollPer={scrollPercent} />
         </div>
         <div ref={textEle1} className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 left-[49.5%] top-[50.5%] text-violet-500 z-[9]" >
-          <h2 className="font-bold">
-            CREATIVE
-          </h2>
-          <h2 className="font-bold">
-            DEVELOPER
-          </h2>
+          <FirstLine text={firstLine} scrollPer={scrollPercent} />
+          <LastLine text={lastLine} scrollPer={scrollPercent} />
         </div>
         <div ref={textEle2} className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 left-[49%] top-[51%] text-violet-400 z-[8]" >
-          <h2 className="font-bold">
-            CREATIVE
-          </h2>
-          <h2 className="font-bold">
-            DEVELOPER
-          </h2>
+          <FirstLine text={firstLine} scrollPer={scrollPercent} />
+          <LastLine text={lastLine} scrollPer={scrollPercent} />
         </div>
         <div ref={textEle3} className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 left-[48.5%] top-[51.5%] text-violet-300 z-[7]" >
-          <h2 className="font-bold">
-            CREATIVE
-          </h2>
-          <h2 className="font-bold">
-            DEVELOPER
-          </h2>
+          <FirstLine text={firstLine} scrollPer={scrollPercent} />
+          <LastLine text={lastLine} scrollPer={scrollPercent} />
         </div>
         <div
           ref={iconEle1}
-          className="absolute w-10 h-10 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
-          <img
-            alt=""
-            src="/icon/cursor.svg"
-            className="h-full w-full object-contain pointer-events-none"
-          />
+          className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+          <ImgComp imgSrc="/icon/cursor.svg" altTxt="cursor" />
         </div>
         <div
           ref={iconEle2}
-          className="absolute w-10 h-10 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
-          <img
-            alt=""
-            src="/icon/award.svg"
-            className="h-full w-full object-contain pointer-events-none"
-          />
+          className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+          <ImgComp imgSrc="/icon/award.svg" altTxt="award" />
         </div>
         <div
           ref={iconEle3}
-          className="absolute w-10 h-10 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
-          <img
-            alt=""
-            src="/icon/eyes.svg"
-            className="h-full w-full object-contain pointer-events-none"
-          />
+          className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+          <ImgComp imgSrc="/icon/eyes.svg" altTxt="eyes" />
         </div>
         <div
           ref={iconEle4}
-          className="absolute w-10 h-10 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
-          <img
-            alt=""
-            src="/icon/light.svg"
-            className="h-full w-full object-contain pointer-events-none"
-          />
+          className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+          <ImgComp imgSrc="/icon/light.svg" altTxt="light" />
         </div>
         <div
           ref={iconEle5}
-          className="absolute w-10 h-10 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
-          <img
-            alt=""
-            src="/icon/planet.svg"
-            className="h-full w-full object-contain pointer-events-none"
-          />
+          className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+          <ImgComp imgSrc="/icon/planet.svg" altTxt="planet" />
         </div>
         <div
           ref={iconEle6}
-          className="absolute w-10 h-10 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
-          <img
-            alt=""
-            src="/icon/plant.svg"
-            className="h-full w-full object-contain pointer-events-none"
-          />
+          className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+          <ImgComp imgSrc="/icon/plant.svg" altTxt="plant" />
         </div>
         <div
           ref={iconEle7}
-          className="absolute w-10 h-10 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
-          <img
-            alt=""
-            src="/icon/pointer.svg"
-            className="h-full w-full object-contain pointer-events-none"
-          />
+          className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+          <ImgComp imgSrc="/icon/pointer.svg" altTxt="pointer" />
         </div>
       </div >
-    </>
+    </div>
+  )
+}
+
+function LastLine({ text, scrollPer }) {
+  return (
+    <h2 className="font-bold text-[190px]" style={{ scale: `100% ${100 + scrollPer}%` }}>
+      {text}
+    </h2>
+  );
+}
+
+function FirstLine({ text, scrollPer }) {
+  return (
+    <h2 className="font-bold" style={{ scale: `100% ${100 - scrollPer}%` }}>
+      {text}
+    </h2>
+  );
+}
+
+function ImgComp({ imgSrc = "/icon/cursor.svg", altTxt = "cursor" }) {
+  return (
+    <div className="w-[59px] h-[59px]">
+      <img
+        alt={altTxt}
+        src={imgSrc}
+        className="h-full w-full object-contain pointer-events-none"
+      />
+    </div>
   )
 }

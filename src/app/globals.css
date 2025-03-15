@@ -1,11 +1,10 @@
 @import "tailwindcss";
 
-
 @font-face {
   font-family: "Bueno";
   src: url("/fonts/bueno-regular.woff") format("woff"),
-       url("/fonts/bueno-regular.ttf") format("truetype"),
-       url("/fonts/bueno-regular.otf") format("opentype");
+    url("/fonts/bueno-regular.ttf") format("truetype"),
+    url("/fonts/bueno-regular.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -13,9 +12,32 @@
 
 body {
   font-family: Bueno, Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
 }
-
 
 .text-shadow-ele {
   text-shadow: 2px 2px 20px rgba(170, 28, 163, 0.767);
+}
+
+.small-bounce {
+  animation: bounce-ani 10s ease-in-out infinite;
+}
+
+.oval {
+  clip-path: ellipse(50% 50% at 50% 50%);
+}
+
+@keyframes bounce-ani {
+  0% {
+    translate: -50% -100%;
+    opacity: 0.5;
+  }
+  50% {
+    translate: -50% -95%;
+    opacity: 0.6;
+  }
+  100% {
+    translate: -50% -100%;
+    opacity: 0.5;
+  }
 }
