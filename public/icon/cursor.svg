@@ -1,0 +1,35 @@
+<svg width="130" height="210" viewBox="0 0 130 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="10" width="10" height="180" fill="#8082F8"/>
+<rect y="9" width="10" height="180" fill="#8082F8"/>
+<rect x="20" y="10" width="10" height="10" fill="#8082F8"/>
+<rect x="30" y="20" width="10" height="10" fill="#8082F8"/>
+<rect x="40" y="30" width="10" height="10" fill="#8082F8"/>
+<rect x="50" y="40" width="10" height="10" fill="#8082F8"/>
+<rect x="60" y="50" width="10" height="10" fill="#8082F8"/>
+<rect x="70" y="60" width="10" height="10" fill="#8082F8"/>
+<rect x="80" y="70" width="10" height="10" fill="#8082F8"/>
+<rect x="90" y="80" width="10" height="10" fill="#8082F8"/>
+<rect x="100" y="90" width="10" height="10" fill="#8082F8"/>
+<rect x="110" y="100" width="10" height="10" fill="#8082F8"/>
+<rect x="50" y="140" width="10" height="10" fill="#8082F8"/>
+<rect x="50" y="150" width="10" height="10" fill="#8082F8"/>
+<rect x="40" y="150" width="10" height="10" fill="#8082F8"/>
+<rect x="40" y="160" width="10" height="10" fill="#8082F8"/>
+<rect x="30" y="160" width="10" height="10" fill="#8082F8"/>
+<rect x="30" y="170" width="10" height="10" fill="#8082F8"/>
+<rect x="20" y="170" width="10" height="10" fill="#8082F8"/>
+<rect y="180" width="30" height="10" fill="#8082F8"/>
+<rect x="80" y="130" width="10" height="20" fill="#8082F8"/>
+<rect x="90" y="150" width="10" height="20" fill="#8082F8"/>
+<rect x="100" y="170" width="10" height="20" fill="#8082F8"/>
+<rect x="70" y="170" width="10" height="20" fill="#8082F8"/>
+<rect x="60" y="170" width="10" height="20" fill="#8082F8"/>
+<rect x="60" y="150" width="10" height="20" fill="#8082F8"/>
+<rect x="50" y="150" width="10" height="20" fill="#8082F8"/>
+<rect x="100" y="190" width="10" height="20" transform="rotate(90 100 190)" fill="#8082F8"/>
+<rect x="90" y="190" width="20" height="20" transform="rotate(90 90 190)" fill="#8082F8"/>
+<rect x="120" y="110" width="10" height="20" fill="#8082F8"/>
+<rect x="80" y="130" width="10" height="40" transform="rotate(-90 80 130)" fill="#8082F8"/>
+<rect x="80" y="140" width="10" height="40" transform="rotate(-90 80 140)" fill="#8082F8"/>
+<path d="M30 20H20V170H30V160H40V150H50V140H60V150H70V170H80V190H100V170H90V150H80V120H120V110H110V100H100V90H90V80H80V70H70V60H60V50H50V40H40V30H30V20Z" fill="#FFF5EE"/>
+</svg>
