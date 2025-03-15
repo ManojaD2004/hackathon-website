@@ -56,13 +56,17 @@ function CreativeComp() {
     ]
     const plaRadius = 50;
     const intervalId = setInterval(() => {
-      for (const planet of planets) {
+      for (let i = 0; i < planets.length; i++) {
+        const planet = planets[i];
         planet.angle += ROTATE_SPEED;
         const x = Math.cos(planet.angle) * (plaRadius + 100) * 7;
         const y = Math.sin(planet.angle) * plaRadius * 7;
-        const z = Math.sin(planet.angle) * plaRadius;
+        const z = Math.sin(planet.angle) * plaRadius * 1.5;
         // console.log(x, y);
-        // console.log(z);
+        // if (i === 0) {
+        //   const sin1 = Math.sin(planet.angle);
+        //   console.log(z, sin1);
+        // }
         if (planet.plaEle.current) {
           planet.plaEle.current.style.transform = `translateX(${x}%) translateY(${y}%) translateZ(${z}px)`;
         }
@@ -135,11 +139,11 @@ function CreativeComp() {
   }
   return (
     <>
-      <div className="text-center  text-[180px] leading-[1] w-full relative h-[100%] transform-3d perspective-[10cm]"
+      <div className="text-center selection:bg-violet-400 text-[180px] leading-[1] w-full relative h-[100%] transform-3d perspective-[10cm]"
         ref={divEle}
         onMouseMove={handleMouseMove}
       >
-        <div ref={textEle} className="translate-z-0 text-shadow-ele selection:bg-violet-400 absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 text-white z-[10]" >
+        <div ref={textEle} className="text-shadow-ele absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 text-white z-[10]" >
           <h2 className="font-bold">
             CREATIVE
           </h2>
@@ -147,7 +151,7 @@ function CreativeComp() {
             DEVELOPER
           </h2>
         </div>
-        <div ref={textEle1} className="translate-z-0 pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 left-[49.5%] top-[50.5%] text-violet-500 z-[9]" >
+        <div ref={textEle1} className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 left-[49.5%] top-[50.5%] text-violet-500 z-[9]" >
           <h2 className="font-bold">
             CREATIVE
           </h2>
@@ -155,7 +159,7 @@ function CreativeComp() {
             DEVELOPER
           </h2>
         </div>
-        <div ref={textEle2} className="translate-z-0 pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 left-[49%] top-[51%] text-violet-400 z-[8]" >
+        <div ref={textEle2} className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 left-[49%] top-[51%] text-violet-400 z-[8]" >
           <h2 className="font-bold">
             CREATIVE
           </h2>
@@ -163,7 +167,7 @@ function CreativeComp() {
             DEVELOPER
           </h2>
         </div>
-        <div ref={textEle3} className="translate-z-0 pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 left-[48.5%] top-[51.5%] text-violet-300 z-[7]" >
+        <div ref={textEle3} className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 left-[48.5%] top-[51.5%] text-violet-300 z-[7]" >
           <h2 className="font-bold">
             CREATIVE
           </h2>
