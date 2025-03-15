@@ -58,7 +58,7 @@ function CreativeComp() {
     const intervalId = setInterval(() => {
       for (const planet of planets) {
         planet.angle += ROTATE_SPEED;
-        const x = Math.cos(planet.angle) * (plaRadius + 50) * 7;
+        const x = Math.cos(planet.angle) * (plaRadius + 100) * 7;
         const y = Math.sin(planet.angle) * plaRadius * 7;
         const z = Math.sin(planet.angle) * plaRadius;
         // console.log(x, y);
@@ -135,39 +135,39 @@ function CreativeComp() {
   }
   return (
     <>
-      <div className="text-center text-[110px] leading-[1] w-full relative h-[100%] transform-3d perspective-[10cm]"
+      <div className="text-center  text-[180px] leading-[1] w-full relative h-[100%] transform-3d perspective-[10cm]"
         ref={divEle}
         onMouseMove={handleMouseMove}
       >
         <div ref={textEle} className="translate-z-0 text-shadow-ele selection:bg-violet-400 absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 text-white z-[10]" >
-          <h2 className="font-sans font-bold">
+          <h2 className="font-bold">
             CREATIVE
           </h2>
-          <h2 className="font-sans font-bold">
+          <h2 className="font-bold">
             DEVELOPER
           </h2>
         </div>
         <div ref={textEle1} className="translate-z-0 pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 left-[49.5%] top-[50.5%] text-violet-500 z-[9]" >
-          <h2 className="font-sans font-bold">
+          <h2 className="font-bold">
             CREATIVE
           </h2>
-          <h2 className="font-sans font-bold">
+          <h2 className="font-bold">
             DEVELOPER
           </h2>
         </div>
         <div ref={textEle2} className="translate-z-0 pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 left-[49%] top-[51%] text-violet-400 z-[8]" >
-          <h2 className="font-sans font-bold">
+          <h2 className="font-bold">
             CREATIVE
           </h2>
-          <h2 className="font-sans font-bold">
+          <h2 className="font-bold">
             DEVELOPER
           </h2>
         </div>
         <div ref={textEle3} className="translate-z-0 pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 left-[48.5%] top-[51.5%] text-violet-300 z-[7]" >
-          <h2 className="font-sans font-bold">
+          <h2 className="font-bold">
             CREATIVE
           </h2>
-          <h2 className="font-sans font-bold">
+          <h2 className="font-bold">
             DEVELOPER
           </h2>
         </div>
